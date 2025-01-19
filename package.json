@@ -1,0 +1,50 @@
+{
+	"name": "@e3m-io/react-tooltip",
+	"version": "1.0.0",
+	"author": "e3m-io",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/e3m-io/react-tooltip.git"
+	},
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"exports": {
+		"./react-18": {
+			"import": "./dist/react-18/index.js",
+			"types": "./dist/types/index.d.ts"
+		},
+		"./react-19": {
+			"import": "./dist/react-19/index.js",
+			"types": "./dist/types/index.d.ts"
+		}
+	},
+	"scripts": {
+		"dist/react-18": "BABEL_ENV=react_18 babel src --out-dir dist/react-18 --extensions .ts,.tsx",
+		"dist/react-19": "BABEL_ENV=react_19 babel src --out-dir dist/react-19 --extensions .ts,.tsx",
+		"dist/types": "tsc",
+		"prepare": "node --run dist/react-18 && node --run dist/react-19 && node --run dist/types"
+	},
+	"dependencies": {
+		"@floating-ui/react": "^0.27.0",
+		"@floating-ui/react-dom": "^2"
+	},
+	"peerDependencies": {
+		"react": ">=17",
+		"react-dom": ">=17"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.26.4",
+		"@babel/core": "^7.26.0",
+		"@babel/preset-react": "^7.26.3",
+		"@babel/preset-typescript": "^7.26.0",
+		"@types/react": "^19.0.7",
+		"@types/react-dom": "^19.0.3",
+		"babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
+		"prettier": "^3.4.2",
+		"typescript": "^5.7.3"
+	},
+	"packageManager": "pnpm@10.0.0"
+}
